@@ -1,0 +1,12 @@
+Benchmark                                               Mode  Cnt         Score          Error  Units
+ListComparison.arrayListNoIntermediate                 thrpt    4  25982483.698 ±  4076057.228  ops/s
+ListComparison.arrayListStoringIntermediate            thrpt    4   8630985.985 ±   602048.584  ops/s
+ListComparison.arrayNoIntermediate                     thrpt    4  27784478.557 ± 18947716.798  ops/s
+ListComparison.arrayStoringIntermediate                thrpt    4   8933449.773 ±  7288254.842  ops/s
+ListComparison.intStream                               thrpt    4  11673711.248 ±   310726.833  ops/s
+ListComparison.intValueListStream                      thrpt    4  18261878.058 ±   433483.359  ops/s
+ListComparison.objStream                               thrpt    4   4848447.274 ±   883547.035  ops/s
+ListComparison.valueListFunctional                     thrpt    4  10729616.474 ±   317299.943  ops/s
+ListComparison.valueListProceduralNoIntermediate       thrpt    4  32595558.678 ±   543895.732  ops/s
+ListComparison.valueListProceduralStoringIntermediate  thrpt    4  10660947.302 ±   346411.786  ops/s
+ListComparison.valueListStream                         thrpt    4   7049792.683 ±  2086334.369  ops/s
