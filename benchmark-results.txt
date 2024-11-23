@@ -1,12 +1,14 @@
-Benchmark                                               Mode  Cnt         Score          Error  Units
-ListComparison.arrayListNoIntermediate                 thrpt    4  25982483.698 ±  4076057.228  ops/s
-ListComparison.arrayListStoringIntermediate            thrpt    4   8630985.985 ±   602048.584  ops/s
-ListComparison.arrayNoIntermediate                     thrpt    4  27784478.557 ± 18947716.798  ops/s
-ListComparison.arrayStoringIntermediate                thrpt    4   8933449.773 ±  7288254.842  ops/s
-ListComparison.intStream                               thrpt    4  11673711.248 ±   310726.833  ops/s
-ListComparison.intValueListStream                      thrpt    4  18261878.058 ±   433483.359  ops/s
-ListComparison.objStream                               thrpt    4   4848447.274 ±   883547.035  ops/s
-ListComparison.valueListFunctional                     thrpt    4  10729616.474 ±   317299.943  ops/s
-ListComparison.valueListProceduralNoIntermediate       thrpt    4  32595558.678 ±   543895.732  ops/s
-ListComparison.valueListProceduralStoringIntermediate  thrpt    4  10660947.302 ±   346411.786  ops/s
-ListComparison.valueListStream                         thrpt    4   7049792.683 ±  2086334.369  ops/s
+Benchmark                                            Mode  Cnt   Score   Error  Units
+
+ListComparison.array                                thrpt    5  14.091 ± 2.197  ops/s
+ListComparison.arrayList                            thrpt    5   9.591 ± 1.358  ops/s
+ListComparison.intStream                            thrpt    5  12.969 ± 0.795  ops/s
+ListComparison.intValueListStream                   thrpt    5  13.374 ± 0.880  ops/s
+ListComparison.objStream                            thrpt    5   7.995 ± 1.348  ops/s
+ListComparison.valueList                            thrpt    5  13.921 ± 1.707  ops/s
+ListComparison.valueListStream                      thrpt    5  11.581 ± 2.100  ops/s
+
+ListComparisonWithIntermediate.array                thrpt    5   8.618 ± 0.864  ops/s
+ListComparisonWithIntermediate.arrayList            thrpt    5   6.557 ± 0.944  ops/s
+ListComparisonWithIntermediate.valueListFunctional  thrpt    5   8.673 ± 1.536  ops/s
+ListComparisonWithIntermediate.valueListProcedural  thrpt    5   9.067 ± 1.177  ops/s

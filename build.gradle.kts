@@ -42,9 +42,8 @@ tasks.compileJmhJava {
 }
 
 jmh {
-    warmupIterations = 2
-    iterations = 2
-    fork = 2
+    fork = 1
+    timeOnIteration = "2s"
 
     jvmArgs = listOf("--enable-preview")
 }

@@ -40,7 +40,7 @@ public value class ValueArrayList<T> implements ValueList<T> {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof ValueArrayList) {
-            return Arrays.equals(elements, ((ValueArrayList<Object>) obj).elements);
+            return Arrays.equals(elements, ((ValueArrayList<?>) obj).elements);
         }
         return false;
     }

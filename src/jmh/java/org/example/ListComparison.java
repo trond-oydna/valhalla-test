@@ -6,19 +6,23 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @State(Scope.Benchmark)
 public class ListComparison {
 
-    @Benchmark
-    public void arrayNoIntermediate(Blackhole bh) {
-        var input = new int[]{0, 1, 2, 3};
+    private final int[] input = IntStream.range(0, 1_000_000)
+            .map(i -> (int) (Math.random() * i))
+            .toArray();
 
-        var res = new String[4];
-        for (int i = 0; i < 4; i++) {
+    @Benchmark
+    public void array(Blackhole bh) {
+        var res = new String[input.length];
+        for (int i = 0; i < input.length; i++) {
             var s = Integer.toString(input[i]);
             res[i] = s + s;
         }
@@ -27,29 +31,11 @@ public class ListComparison {
     }
 
     @Benchmark
-    public void arrayStoringIntermediate(Blackhole bh) {
-        var input = new int[]{0, 1, 2, 3};
+    public void arrayList(Blackhole bh) {
+        var input = Arrays.asList(boxed(this.input));
 
-        var res1 = new String[4];
-        for (int i = 0; i < 4; i++) {
-            res1[i] = Integer.toString(input[i]);
-        }
-
-        var res2 = new String[4];
-        for (int i = 0; i < 4; i++) {
-            var s = res1[i];
-            res2[i] = s + s;
-        }
-
-        bh.consume(res2);
-    }
-
-    @Benchmark
-    public void arrayListNoIntermediate(Blackhole bh) {
-        var input = new int[]{0, 1, 2, 3};
-
-        var res = new ArrayList<String>(4);
-        for (int i : input) {
+        var res = new ArrayList<String>(input.size());
+        for (Integer i : input) {
             var s = Integer.toString(i);
             res.add(s + s);
         }
@@ -58,37 +44,11 @@ public class ListComparison {
     }
 
     @Benchmark
-    public void arrayListStoringIntermediate(Blackhole bh) {
-        var input = new int[]{0, 1, 2, 3};
+    public void valueList(Blackhole bh) {
+        var input = new IntValueArrayList(this.input);
 
-        var res1 = new ArrayList<String>(4);
-        for (int i : input) {
-            res1.add(Integer.toString(i));
-        }
-
-        var res2 = new ArrayList<String>(4);
-        for (String s : res1) {
-            res2.add(s + s);
-        }
-
-        bh.consume(res2);
-    }
-
-    @Benchmark
-    public void valueListFunctional(Blackhole bh) {
-        var res = new IntValueArrayList(new int[]{0, 1, 2, 3})
-                .mapInt(Integer::toString)
-                .map(s -> s + s);
-
-        bh.consume(res);
-    }
-
-    @Benchmark
-    public void valueListProceduralNoIntermediate(Blackhole bh) {
-        var input = new IntValueArrayList(new int[]{0, 1, 2, 3});
-
-        var resBacking = new String[4];
-        for (int i = 0; i < 4; i++) {
+        var resBacking = new String[input.size()];
+        for (int i = 0; i < input.size(); i++) {
             var s = Integer.toString(input.getInt(i));
             resBacking[i] = s + s;
         }
@@ -98,28 +58,8 @@ public class ListComparison {
     }
 
     @Benchmark
-    public void valueListProceduralStoringIntermediate(Blackhole bh) {
-        var input = new IntValueArrayList(new int[]{0, 1, 2, 3});
-
-        var res1Backing = new String[4];
-        for (int i = 0; i < 4; i++) {
-            res1Backing[i] = Integer.toString(input.getInt(i));
-        }
-        var res1 = new ValueArrayList<>(res1Backing);
-
-        var res2Backing = new String[4];
-        for (int i = 0; i < 4; i++) {
-            var s = res1.get(i);
-            res2Backing[i] = s + s;
-        }
-        var res2 = new ValueArrayList<>(res2Backing);
-
-        bh.consume(res2);
-    }
-
-    @Benchmark
     public void valueListStream(Blackhole bh) {
-        var res = new IntValueArrayList(new int[]{0, 1, 2, 3})
+        var res = new IntValueArrayList(input)
                 .valueListStream()
                 .map(IntBox::toString)
                 .map(s -> s + s)
@@ -130,7 +70,7 @@ public class ListComparison {
 
     @Benchmark
     public void intValueListStream(Blackhole bh) {
-        var res = new IntValueArrayList(new int[]{0, 1, 2, 3})
+        var res = new IntValueArrayList(input)
                 .intValueListStream()
                 .mapToObj(Integer::toString)
                 .map(s -> s + s)
@@ -141,7 +81,7 @@ public class ListComparison {
 
     @Benchmark
     public void intStream(Blackhole bh) {
-        var res = IntStream.of(0, 1, 2, 3)
+        var res = IntStream.of(input)
                 .mapToObj(Integer::toString)
                 .map(s -> s + s)
                 .toArray(String[]::new);
@@ -149,14 +89,21 @@ public class ListComparison {
         bh.consume(res);
     }
 
-
     @Benchmark
     public void objStream(Blackhole bh) {
-        var res = Stream.of(0, 1, 2, 3)
+        var res = Stream.of(boxed(input))
                 .map(Objects::toString)
                 .map(s -> s + s)
                 .toArray(String[]::new);
 
         bh.consume(res);
+    }
+
+    static Integer[] boxed(int[] input) {
+        Integer[] res = new Integer[input.length];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = input[i];
+        }
+        return res;
     }
 }
