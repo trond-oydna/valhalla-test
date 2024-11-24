@@ -41,6 +41,14 @@ tasks.compileJmhJava {
     options.compilerArgs.add("--enable-preview")
 }
 
+tasks.jmhCompileGeneratedClasses {
+    options.compilerArgs.add("--enable-preview")
+}
+
+tasks.jmhRunBytecodeGenerator {
+    jvmArgs.add("--enable-preview")
+}
+
 jmh {
     fork = 1
     timeOnIteration = "2s"

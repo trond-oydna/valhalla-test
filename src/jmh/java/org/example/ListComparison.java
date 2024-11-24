@@ -99,10 +99,28 @@ public class ListComparison {
         bh.consume(res);
     }
 
+    @Benchmark
+    public void objIntBoxStream(Blackhole bh) {
+        var res = Stream.of(intBoxed(input))
+                .map(Objects::toString)
+                .map(s -> s + s)
+                .toArray(String[]::new);
+
+        bh.consume(res);
+    }
+
     static Integer[] boxed(int[] input) {
         Integer[] res = new Integer[input.length];
         for (int i = 0; i < res.length; i++) {
             res[i] = input[i];
+        }
+        return res;
+    }
+
+    static IntBox[] intBoxed(int[] input) {
+        IntBox[] res = new IntBox[input.length];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = new IntBox(input[i]);
         }
         return res;
     }
