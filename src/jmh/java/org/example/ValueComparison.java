@@ -13,9 +13,9 @@ public class ValueComparison {
     @Benchmark
     public void value(Blackhole bh) {
         var input = new IntBox((int) (Math.random() * 1_000));
-        var res = input.value() * 1_000;
+        var res = new IntBox(input.value() * 1_000);
 
-        bh.consume(res);
+        bh.consume(res.value());
     }
 
     @Benchmark
@@ -23,6 +23,6 @@ public class ValueComparison {
         Integer input = (int) (Math.random() * 1_000);
         Integer res = input * 1_000;
 
-        bh.consume(res);
+        bh.consume(res.intValue());
     }
 }

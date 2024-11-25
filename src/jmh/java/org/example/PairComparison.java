@@ -12,9 +12,11 @@ public class PairComparison {
     public void value(Blackhole bh) {
         var first = (int) (Math.random() * 1_000);
         var second = (int) (Math.random() * 1_000);
-        var input = new IntValuePair(first, second);
-        var res = input.first() + input.second();
 
+        var input = new IntValuePair(first, second);
+        bh.consume(input);
+
+        var res = input.first() + input.second();
         bh.consume(res);
     }
 
@@ -22,9 +24,11 @@ public class PairComparison {
     public void ref(Blackhole bh) {
         var first = (int) (Math.random() * 1_000);
         var second = (int) (Math.random() * 1_000);
-        var input = new IntRefPair(first, second);
-        var res = input.first() + input.second();
 
+        var input = new IntRefPair(first, second);
+        bh.consume(input);
+
+        var res = input.first() + input.second();
         bh.consume(res);
     }
 }

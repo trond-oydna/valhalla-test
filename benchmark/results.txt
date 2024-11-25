@@ -1,8 +1,9 @@
 Benchmark                                            Mode  Cnt         Score         Error  Units
-ArrayValueComparison.refInt                         thrpt    5        32.837 ±       8.552  ops/s
-ArrayValueComparison.refPair                        thrpt    5        34.923 ±       2.751  ops/s
-ArrayValueComparison.valueInt                       thrpt    5        36.518 ±       3.625  ops/s
-ArrayValueComparison.valuePair                      thrpt    5        37.406 ±       3.586  ops/s
+ArrayComparison.refInt                         thrpt    5        32.837 ±       8.552  ops/s
+ArrayComparison.refPair                        thrpt    5        34.923 ±       2.751  ops/s
+ArrayComparison.valueInt                       thrpt    5        36.518 ±       3.625  ops/s
+ArrayComparison.valuePair                      thrpt    5        37.406 ±       3.586  ops/s
+
 ListComparison.array                                thrpt    5        14.239 ±       2.258  ops/s
 ListComparison.arrayList                            thrpt    5         9.472 ±       2.939  ops/s
 ListComparison.intStream                            thrpt    5        12.536 ±       2.306  ops/s
@@ -11,11 +12,14 @@ ListComparison.objIntBoxStream                      thrpt    5         7.959 ± 
 ListComparison.objStream                            thrpt    5         8.132 ±       0.890  ops/s
 ListComparison.valueList                            thrpt    5        13.302 ±       2.951  ops/s
 ListComparison.valueListStream                      thrpt    5         8.909 ±       2.999  ops/s
+
 ListComparisonWithIntermediate.array                thrpt    5         7.689 ±       4.007  ops/s
 ListComparisonWithIntermediate.arrayList            thrpt    5         5.215 ±       0.629  ops/s
 ListComparisonWithIntermediate.valueListFunctional  thrpt    5         7.954 ±       1.556  ops/s
 ListComparisonWithIntermediate.valueListProcedural  thrpt    5         8.866 ±       0.940  ops/s
+
 PairComparison.ref                                  thrpt    5  25849568.064 ± 1751979.318  ops/s
 PairComparison.value                                thrpt    5  25627735.484 ± 1094360.046  ops/s
+
 ValueComparison.ref                                 thrpt    5  46535370.082 ± 1485698.635  ops/s
 ValueComparison.value                               thrpt    5  49556211.884 ± 8258956.391  ops/s

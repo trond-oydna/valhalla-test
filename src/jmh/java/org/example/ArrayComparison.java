@@ -8,7 +8,7 @@ import org.openjdk.jmh.infra.Blackhole;
 import java.util.stream.IntStream;
 
 @State(Scope.Benchmark)
-public class ArrayValueComparison {
+public class ArrayComparison {
 
     private final int[] input = IntStream.range(0, 1_000_000)
             .map(i -> (int) (Math.random() * i))
