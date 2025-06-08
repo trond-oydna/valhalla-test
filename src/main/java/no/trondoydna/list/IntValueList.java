@@ -1,4 +1,4 @@
-package no.trondoydna;
+package no.trondoydna.list;
 
 public interface IntValueList extends Iterable<Integer> {
 

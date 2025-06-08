@@ -1,5 +1,7 @@
-package no.trondoydna;
+package no.trondoydna.list;
 
+import no.trondoydna.pair.IntRefPair;
+import no.trondoydna.pair.IntValuePair;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;

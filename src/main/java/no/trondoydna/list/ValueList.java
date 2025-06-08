@@ -1,4 +1,4 @@
-package no.trondoydna;
+package no.trondoydna.list;
 
 import java.util.function.Function;
 

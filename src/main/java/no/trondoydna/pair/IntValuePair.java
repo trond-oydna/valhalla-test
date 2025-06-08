@@ -1,4 +1,4 @@
-package no.trondoydna;
+package no.trondoydna.pair;
 
 public value record IntValuePair(
     int first,

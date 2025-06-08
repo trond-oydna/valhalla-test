@@ -1,4 +1,4 @@
-package no.trondoydna;
+package no.trondoydna.list;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -29,14 +29,14 @@ public value class IntValueArrayList implements IntValueList, ValueList<Integer>
     @Override
     public ValueListStream<Integer> valueListStream() {
         return new ValueListStream.Impl<>(
-            new ValueListStreamTraverser.ValueListSource<>(this)
+            new ValueListStream.ValueListStreamTraverser.ValueListSource<>(this)
         );
     }
 
     @Override
     public IntValueListStream intValueListStream() {
         return new IntValueListStream.Impl(
-            new IntValueListStreamTraverser.IntValueListSource(this)
+            new IntValueListStream.IntValueListStreamTraverser.IntValueListSource(this)
         );
     }
 

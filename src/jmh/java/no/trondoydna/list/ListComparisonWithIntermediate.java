@@ -1,4 +1,4 @@
-package no.trondoydna;
+package no.trondoydna.list;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-import static no.trondoydna.ListComparison.boxed;
+import static no.trondoydna.list.ListComparison.boxed;
 
 @State(Scope.Benchmark)
 public class ListComparisonWithIntermediate {

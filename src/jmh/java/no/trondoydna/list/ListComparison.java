@@ -1,4 +1,4 @@
-package no.trondoydna;
+package no.trondoydna.list;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;

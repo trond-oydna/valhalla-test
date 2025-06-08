@@ -1,16 +1,17 @@
-Benchmark                                            Mode  Cnt         Score   Error  Units
-ArrayComparison.refPair                             thrpt             34.448          ops/s
-ArrayComparison.valuePair                           thrpt             35.308          ops/s
-ListComparison.array                                thrpt             14.438          ops/s
-ListComparison.arrayList                            thrpt              9.729          ops/s
-ListComparison.intStream                            thrpt             13.398          ops/s
-ListComparison.intValueListStream                   thrpt             13.613          ops/s
-ListComparison.objStream                            thrpt              7.747          ops/s
-ListComparison.valueList                            thrpt             14.177          ops/s
-ListComparison.valueListStream                      thrpt              8.994          ops/s
-ListComparisonWithIntermediate.array                thrpt              8.660          ops/s
-ListComparisonWithIntermediate.arrayList            thrpt              6.873          ops/s
-ListComparisonWithIntermediate.valueListFunctional  thrpt              9.409          ops/s
-ListComparisonWithIntermediate.valueListProcedural  thrpt              8.483          ops/s
-PairComparison.ref                                  thrpt       26403217.261          ops/s
-PairComparison.value                                thrpt       26287634.733          ops/s
+Benchmark                                                     Mode  Cnt         Score         Error  Units
+n.t.list.ArrayComparison.refPair                             thrpt    5        33.697 ±       3.620  ops/s
+n.t.list.ArrayComparison.valuePair                           thrpt    5        37.292 ±       4.754  ops/s
+n.t.list.ListComparison.array                                thrpt    5        14.335 ±       1.709  ops/s
+n.t.list.ListComparison.arrayList                            thrpt    5        10.076 ±       2.377  ops/s
+n.t.list.ListComparison.intStream                            thrpt    5        13.149 ±       0.939  ops/s
+n.t.list.ListComparison.intValueListStream                   thrpt    5        13.162 ±       1.699  ops/s
+n.t.list.ListComparison.objStream                            thrpt    5         8.392 ±       1.233  ops/s
+n.t.list.ListComparison.valueList                            thrpt    5        14.382 ±       1.902  ops/s
+n.t.list.ListComparison.valueListStream                      thrpt    5         8.605 ±       0.964  ops/s
+n.t.list.ListComparisonWithIntermediate.array                thrpt    5         8.937 ±       1.851  ops/s
+n.t.list.ListComparisonWithIntermediate.arrayList            thrpt    5         6.678 ±       0.354  ops/s
+n.t.list.ListComparisonWithIntermediate.valueListFunctional  thrpt    5         9.025 ±       0.789  ops/s
+n.t.list.ListComparisonWithIntermediate.valueListProcedural  thrpt    5         8.959 ±       2.067  ops/s
+n.t.pair.PairComparison.ref                                  thrpt    5  25926998.915 ± 1085099.684  ops/s
+n.t.pair.PairComparison.value                                thrpt    5  26276803.525 ±   88005.988  ops/s
+ 1.851

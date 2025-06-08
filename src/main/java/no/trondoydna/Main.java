@@ -1,5 +1,7 @@
 package no.trondoydna;
 
+import no.trondoydna.list.IntValueArrayList;
+
 public class Main {
     public static void main(String[] args) {
         var res = new IntValueArrayList(new int[]{0, 1, 2, 3})
