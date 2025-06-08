@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
@@ -10,6 +10,12 @@ public interface IntValueListStream {
     <R> ValueListStream<R> mapToObj(IntFunction<R> mapper);
 
     IntValueList toIntValueList();
+
+    static IntValueListStream of(int... values) {
+        return new IntValueListStream.Impl(
+                new IntValueListStreamTraverser.IntArraySource(values)
+        );
+    }
 
     static value class Impl implements IntValueListStream {
         private final IntValueListStreamTraverser traverser;

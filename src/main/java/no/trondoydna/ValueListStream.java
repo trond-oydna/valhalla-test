@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import java.util.function.Function;
 import java.util.function.IntFunction;
@@ -8,6 +8,13 @@ public interface ValueListStream<T> {
     <R> ValueListStream<R> map(Function<? super T, ? extends R> mapper);
 
     ValueArrayList<T> toValueArrayList(IntFunction<T[]> toArray);
+
+    @SafeVarargs
+    static <T> ValueListStream<T> of(T... values) {
+        return new ValueListStream.Impl<>(
+                new ValueListStreamTraverser.ArraySource<>(values)
+        );
+    }
 
     static value class Impl<T> implements ValueListStream<T> {
         private final ValueListStreamTraverser<T> traverser;

@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
@@ -7,11 +7,9 @@ import org.openjdk.jmh.infra.Blackhole;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-import static org.example.ListComparison.boxed;
+import static no.trondoydna.ListComparison.boxed;
 
 @State(Scope.Benchmark)
 public class ListComparisonWithIntermediate {

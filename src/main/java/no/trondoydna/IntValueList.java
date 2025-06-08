@@ -1,6 +1,6 @@
-package org.example;
+package no.trondoydna;
 
-public interface IntValueList extends Iterable<IntBox> {
+public interface IntValueList extends Iterable<Integer> {
 
     int getInt(int index);
 

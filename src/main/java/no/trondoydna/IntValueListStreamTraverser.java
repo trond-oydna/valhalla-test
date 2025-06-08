@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
@@ -9,10 +9,10 @@ public interface IntValueListStreamTraverser {
 
     int size();
 
-    static value class Source implements IntValueListStreamTraverser {
+    static value class IntValueListSource implements IntValueListStreamTraverser {
         private final IntValueList source;
 
-        public Source(IntValueList source) {
+        public IntValueListSource(IntValueList source) {
             this.source = source;
         }
 
@@ -24,6 +24,24 @@ public interface IntValueListStreamTraverser {
         @Override
         public int size() {
             return source.size();
+        }
+    }
+
+    static value class IntArraySource implements IntValueListStreamTraverser {
+        private final int[] source;
+
+        public IntArraySource(int[] source) {
+            this.source = source;
+        }
+
+        @Override
+        public int get(int index) {
+            return source[index];
+        }
+
+        @Override
+        public int size() {
+            return source.length;
         }
     }
 

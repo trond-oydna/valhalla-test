@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 @State(Scope.Benchmark)
 public class ListComparison {
@@ -59,9 +58,8 @@ public class ListComparison {
 
     @Benchmark
     public void valueListStream(Blackhole bh) {
-        var res = new IntValueArrayList(input)
-                .valueListStream()
-                .map(IntBox::toString)
+        var res = ValueListStream.of(boxed(this.input))
+                .map(Object::toString)
                 .map(s -> s + s)
                 .toValueArrayList(String[]::new);
 
@@ -70,8 +68,7 @@ public class ListComparison {
 
     @Benchmark
     public void intValueListStream(Blackhole bh) {
-        var res = new IntValueArrayList(input)
-                .intValueListStream()
+        var res = IntValueListStream.of(input)
                 .mapToObj(Integer::toString)
                 .map(s -> s + s)
                 .toValueArrayList(String[]::new);
@@ -99,28 +96,10 @@ public class ListComparison {
         bh.consume(res);
     }
 
-    @Benchmark
-    public void objIntBoxStream(Blackhole bh) {
-        var res = Stream.of(intBoxed(input))
-                .map(Objects::toString)
-                .map(s -> s + s)
-                .toArray(String[]::new);
-
-        bh.consume(res);
-    }
-
     static Integer[] boxed(int[] input) {
         Integer[] res = new Integer[input.length];
         for (int i = 0; i < res.length; i++) {
             res[i] = input[i];
-        }
-        return res;
-    }
-
-    static IntBox[] intBoxed(int[] input) {
-        IntBox[] res = new IntBox[input.length];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = new IntBox(input[i]);
         }
         return res;
     }

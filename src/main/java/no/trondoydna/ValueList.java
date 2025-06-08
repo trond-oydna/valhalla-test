@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import java.util.function.Function;
 

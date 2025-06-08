@@ -3,7 +3,7 @@ plugins {
     id("me.champeau.jmh").version("0.7.2")
 }
 
-group = "org.example"
+group = "no.trondoydna"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -11,8 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.openjdk.jmh:jmh-core:1.37")
-    implementation("org.openjdk.jmh:jmh-generator-annprocess:1.37")
+    jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.36")
 
     testImplementation(platform("org.junit:junit-bom:5.10.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -33,7 +32,7 @@ tasks.test {
 
 tasks.create<JavaExec>("run") {
     classpath = sourceSets.main.get().runtimeClasspath
-    mainClass.set("org.example.Main")
+    mainClass.set("no.trondoydna.Main")
     jvmArgs("--enable-preview")
 }
 
@@ -54,4 +53,6 @@ jmh {
     timeOnIteration = "2s"
 
     jvmArgs = listOf("--enable-preview")
+
+    resultsFile = project.file("${layout.projectDirectory}/benchmark/results.txt")
 }

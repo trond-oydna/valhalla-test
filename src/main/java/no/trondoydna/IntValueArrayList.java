@@ -1,10 +1,10 @@
-package org.example;
+package no.trondoydna;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.function.IntFunction;
 
-public value class IntValueArrayList implements IntValueList, ValueList<IntBox> {
+public value class IntValueArrayList implements IntValueList, ValueList<Integer> {
     private int[] elements;
 
     public IntValueArrayList(int[] elements) {
@@ -12,8 +12,8 @@ public value class IntValueArrayList implements IntValueList, ValueList<IntBox> 
     }
 
     @Override
-    public IntBox get(int index) {
-        return new IntBox(getInt(index));
+    public Integer get(int index) {
+        return getInt(index);
     }
 
     @Override
@@ -27,21 +27,21 @@ public value class IntValueArrayList implements IntValueList, ValueList<IntBox> 
     }
 
     @Override
-    public ValueListStream<IntBox> valueListStream() {
+    public ValueListStream<Integer> valueListStream() {
         return new ValueListStream.Impl<>(
-            new ValueListStreamTraverser.Source<>(this)
+            new ValueListStreamTraverser.ValueListSource<>(this)
         );
     }
 
     @Override
     public IntValueListStream intValueListStream() {
         return new IntValueListStream.Impl(
-            new IntValueListStreamTraverser.Source(this)
+            new IntValueListStreamTraverser.IntValueListSource(this)
         );
     }
 
     @Override
-    public Iterator<IntBox> iterator() {
+    public Iterator<Integer> iterator() {
         return new IntArrayIterator(elements);
     }
 
@@ -72,7 +72,7 @@ public value class IntValueArrayList implements IntValueList, ValueList<IntBox> 
         return Arrays.toString(elements);
     }
 
-    private class IntArrayIterator implements Iterator<IntBox> {
+    private class IntArrayIterator implements Iterator<Integer> {
         private final int[] elements;
         private int index = 0;
 
@@ -86,10 +86,10 @@ public value class IntValueArrayList implements IntValueList, ValueList<IntBox> 
         }
 
         @Override
-        public IntBox next() {
+        public Integer next() {
             int next = elements[index];
             index++;
-            return new IntBox(next);
+            return next;
         }
     }
 }

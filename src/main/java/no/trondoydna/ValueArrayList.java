@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -23,7 +23,7 @@ public value class ValueArrayList<T> implements ValueList<T> {
     @Override
     public ValueListStream<T> valueListStream() {
         return new ValueListStream.Impl<>(
-            new ValueListStreamTraverser.Source<>(this)
+            new ValueListStreamTraverser.ValueListSource<>(this)
         );
     }
 

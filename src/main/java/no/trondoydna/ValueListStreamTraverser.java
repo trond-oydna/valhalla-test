@@ -1,4 +1,4 @@
-package org.example;
+package no.trondoydna;
 
 import java.util.function.Function;
 
@@ -8,10 +8,10 @@ public interface ValueListStreamTraverser<T> {
 
     int size();
 
-    static value class Source<T> implements ValueListStreamTraverser<T> {
+    static value class ValueListSource<T> implements ValueListStreamTraverser<T> {
         private final ValueList<T> source;
 
-        public Source(ValueList<T> source) {
+        public ValueListSource(ValueList<T> source) {
             this.source = source;
         }
 
@@ -23,6 +23,24 @@ public interface ValueListStreamTraverser<T> {
         @Override
         public int size() {
             return source.size();
+        }
+    }
+
+    static value class ArraySource<T> implements ValueListStreamTraverser<T> {
+        private final T[] source;
+
+        public ArraySource(T[] source) {
+            this.source = source;
+        }
+
+        @Override
+        public T get(int index) {
+            return source[index];
+        }
+
+        @Override
+        public int size() {
+            return source.length;
         }
     }
 
