@@ -1,6 +1,7 @@
 package no.trondoydna;
 
 import no.trondoydna.list.IntValueArrayList;
+import no.trondoydna.list.ValueArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,5 +12,8 @@ public class Main {
                 .toValueArrayList(String[]::new);
 
         System.out.println(res);
+
+        System.out.println("Integer.class.isValue: " + Integer.class.isValue());
+        System.out.println("ValueArrayList.class.isValue: " + ValueArrayList.class.isValue());
     }
 }
